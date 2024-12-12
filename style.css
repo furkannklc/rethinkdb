@@ -1,0 +1,107 @@
+body{
+    background-color: rgb(225, 230, 234);
+    padding: 0;
+    margin: 0;
+}
+.header{
+    background-color: deeppink;
+    justify-content: center;
+    align-content: center;
+    position: relative;
+    height: 175px;
+    display: flex;
+}
+.container{
+    background-color: rgb(225, 230, 234);
+    flex-direction: column;
+    border-radius: 20px;
+    position: absolute;
+    display: flex;
+    width: 500px;
+    top: 135px;
+}
+.add-todo{
+    background-color: white;
+    flex-direction: column;
+    border-radius: 20px;
+    padding: 20px;
+    display: flex;
+    width: 500px;
+    height: 70px;
+}
+.add-todo-bottom{
+    justify-content: space-between;
+    display: flex;
+}
+.add-input{
+    border-color: darkgray;
+    border-style:groove;
+    border-radius: 2px;
+    border-width: 1px;
+    height: auto;
+    width: 410px;
+}
+.add-button{
+    background-color: deeppink;
+    border-radius: 5px;
+    padding:10px 20px;
+    color: white;
+    border: 0px;
+}
+.todos{
+    border-color: rgba(169, 169, 169, 0.628);
+    background-color: white;
+    border-style:groove;
+    flex-direction: row;
+    align-items: center;
+    border-width: 1px;
+    margin-top: 50px;
+    padding: 15px;
+    display: flex;
+    width: 500px;
+    height: 70px;
+    gap: 10px;
+}
+.edit-todo{
+   flex-direction: row;
+   display: flex; 
+   gap: 10px;
+   
+}
+.edit-input{
+    border-color: darkgray;
+    border-style:groove;
+    border-radius: 2px;
+    border-width: 1px;
+    width: 375px;
+    height: auto;
+}
+.edit-button{
+    background-color: white;
+    border-radius: 5px;
+    border: 2px solid;
+    padding:10px 20px;
+    color:deeppink;
+}
+.getTodos{
+    justify-content: space-between;
+    background-color: white;
+    border: 1px solid black;
+    align-items:center ;
+    border-radius: 5px;
+    padding:10px 20px;
+    color: white;
+    display: flex;
+    width: 490px;
+}
+label{
+    font-size: 20px;
+    color: black;
+}
+
+.delete-edit{
+    justify-content: space-between;
+    align-items: center;
+    display: flex;
+    gap: 20px;
+}
