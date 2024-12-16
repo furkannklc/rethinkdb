@@ -1,5 +1,4 @@
 let tododiv=document.getElementById('todo2')//todoların koyulacağı div
-let sayac;
 let editİD=0;
 let newinfo;
 
@@ -9,15 +8,12 @@ window.onload = function () {
 };
 function getTodo(){ 
     tododiv.innerHTML=``//her verileri çekerken önce todoalrın olduğu yeri boşalt
-    sayac=0;//id ler için sayac 0 dan başlat
     fetch('http://localhost:3000/todos',{
         'Access-Control-Allow-Origin':"*"
 }).then(response => response.json())
      .then(todos => { 
          todos.forEach(todo => {
-         if(sayac<todo.id){
-             sayac=todo.id
-            }
+         
             tododiv.innerHTML+=`<div class="getTodos" id =${todo.id}>
                  <div class="labelİnput">
                  <input type="checkbox" class="getİnput"  id="td">
@@ -25,16 +21,16 @@ function getTodo(){
                  </div>
                  <div class="delete-edit">
                  <i onclick="duzenle2('${todo.info}','${todo.id}')" style="color: deeppink;" class="fa-solid fa-pen"></i>
-                 <i onclick="sil(${todo.id})" style="color: deeppink;" class="fa-solid fa-trash"></i>
+                 <i onclick="sil('${todo.id}')" style="color: deeppink;" class="fa-solid fa-trash"></i>
                  </div>
              </div>
          `;
          });
-         sayac++;//yeni eklenece olan todoların id si önceki ile aynısı olmaması için koyuldu
      })
  }
         
 function sil(numara){//numara =id
+    console.log(numara)
     fetch('http://localhost:3000/todos/'+numara,{
         method :"DELETE"
 }).then(response => {
@@ -48,9 +44,7 @@ function sil(numara){//numara =id
 })
 }
 function ekle(){//save tuşuna basınca olacaklar
-    if(sayac===undefined){
-        sayac=0;
-     }
+    
  let newinfo=document.getElementById('addinput').value
  
  fetch('http://localhost:3000/todos',{
@@ -60,7 +54,6 @@ function ekle(){//save tuşuna basınca olacaklar
      },
      body: JSON.stringify({
           "info": newinfo,
-          "id":sayac
           }),
  }).then(response =>{
     
@@ -72,7 +65,6 @@ function ekle(){//save tuşuna basınca olacaklar
       
  }).then(data =>{
      getTodo();//verileri veri tabanında düzeltip verileri yeniden çekmek için 
-     sayac++;//yeni eklenecek olan todonun id si aynı olmasın diye sayac arttırıldı
  }).catch(err =>{
      return console.log("burda hata var");
  })
